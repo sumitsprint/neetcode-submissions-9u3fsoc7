@@ -1,0 +1,27 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+    
+        map1, map2 = {}, {}
+        for i in range(len(s)):
+        
+            map1.update({s[i]: map1.get(s[i], 0) + 1})
+           
+        
+            map2.update({t[i]: map2.get(t[i], 0)+ 1})
+        for n in map1:
+        
+            if map1[n] != map2.get(n, 0):
+                return False
+        
+        return True
+"""
+For example, if s = "ab" and t = "aa", then map1 = {"a":1,"b":1} and map2 = {"a":2}.
+When the loop reaches n = "b", map2["b"] doesn’t exist → KeyError."""
+        # T.C - O(n + n) = O(n)
+        # S.C- O(1)
+        # Since the dictionary size is capped by the number of 
+        # possible unique characters ($k$) and not the 
+        # length of the string ($n$), we say the space is $O(k)$
+        
